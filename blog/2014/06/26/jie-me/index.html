@@ -10,7 +10,7 @@
 
   
   <meta name="description" content="ちょっと悩んだら行動したほうが早いね。
-戒め。 http://hitrok.github.comがなんかわけわからんことになってたので、こっちを作りました！
+戒め。 Octpress作りなおした。
 ">
   
 
@@ -96,7 +96,7 @@
 <div class="entry-content"><p>ちょっと悩んだら行動したほうが早いね。
 戒め。</p>
 
-<p><a href="http://github.com">http://hitrok.github.com</a>がなんかわけわからんことになってたので、こっちを作りました！</p>
+<p>Octpress作りなおした。</p>
 </div>
 
 
@@ -132,11 +132,9 @@
     </p>
     
       <div class="sharing">
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://hitrok.github.io/blog/2014/06/26/jie-me/" data-via="hitrok" data-counturl="http://hitrok.github.io/blog/2014/06/26/jie-me/" >Tweet</a>
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://hitrok.github.io/blog/2014/06/26/jie-me/" data-via="" data-counturl="http://hitrok.github.io/blog/2014/06/26/jie-me/" >Tweet</a>
-  
-  
-  
+  <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
 </div>
 
     
@@ -165,6 +163,42 @@
 
 
 
+<section>
+  <h1>About Me</h1>
+  <div id="twitter-profile" style="margin-top:0.5em;">
+    <p>
+      <strong>hitrok</strong> 
+      (<a href="http://twitter.com/hitrok">@hitrok</a>)
+    </p>
+    <p></p>
+  </div>
+  <script type="text/javascript">
+    $(function(){
+        var container = $('#twitter-profile'),
+            user = "hitrok";
+        
+        function parseTwLinks(s) {
+          var twUrl = "http://www.twitter.com/"
+          s = s.replace(/ (@([\w]+))/g, function(match, p1, p2) {
+              return " <a href='"+twUrl+p2+"'>"+p1+"</a>"
+          }).replace(/ (#([\w]+))/g, function(match, p1, p2) {
+              return " <a href='"+twUrl+"#!/search?q=%23"+p2+"'>"+p1+"</a>"
+          })
+          return s
+        }
+
+        $.ajax({
+            url: "http://api.twitter.com/1/users/show.json?include_entities=false&screen_name="+user+"&callback=?"
+          , type: 'GET'
+          , dataType: 'jsonp'
+          , error: function (err) { $('#twitter-profile').addClass('error');  }
+          , success: function(data) {
+              container.html('<img class="left" src="http://api.twitter.com/1/users/profile_image/'+user+'.json?size=bigger" alt="@'+user+'"><p><strong>'+data.name+'</strong> (<a href="http://twitter.com/'+user+'">@'+user+'</a>)<br/>'+data.location+'</p><p>'+parseTwLinks(data.description)+'</p>');
+            }
+        })
+      });
+  </script>
+</section>
 
   
 </aside>

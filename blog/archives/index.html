@@ -9,8 +9,8 @@
   <meta name="author" content="hitrok">
 
   
-  <meta name="description" content=" Blog Archive 2014 戒め
-Jun 26 2014 posted in 仕事, 感想 Recent Posts 戒め ">
+  <meta name="description" content="Blog Archive 2014 戒め
+Jun 26 2014 posted in 仕事, 感想 Recent Posts 戒め About Me hitrok (@hitrok) $(function(){ var container = $('#twitter-profile'), &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -114,6 +114,42 @@ Jun 26 2014 posted in 仕事, 感想 Recent Posts 戒め ">
 
 
 
+<section>
+  <h1>About Me</h1>
+  <div id="twitter-profile" style="margin-top:0.5em;">
+    <p>
+      <strong>hitrok</strong> 
+      (<a href="http://twitter.com/hitrok">@hitrok</a>)
+    </p>
+    <p></p>
+  </div>
+  <script type="text/javascript">
+    $(function(){
+        var container = $('#twitter-profile'),
+            user = "hitrok";
+        
+        function parseTwLinks(s) {
+          var twUrl = "http://www.twitter.com/"
+          s = s.replace(/ (@([\w]+))/g, function(match, p1, p2) {
+              return " <a href='"+twUrl+p2+"'>"+p1+"</a>"
+          }).replace(/ (#([\w]+))/g, function(match, p1, p2) {
+              return " <a href='"+twUrl+"#!/search?q=%23"+p2+"'>"+p1+"</a>"
+          })
+          return s
+        }
+
+        $.ajax({
+            url: "http://api.twitter.com/1/users/show.json?include_entities=false&screen_name="+user+"&callback=?"
+          , type: 'GET'
+          , dataType: 'jsonp'
+          , error: function (err) { $('#twitter-profile').addClass('error');  }
+          , success: function(data) {
+              container.html('<img class="left" src="http://api.twitter.com/1/users/profile_image/'+user+'.json?size=bigger" alt="@'+user+'"><p><strong>'+data.name+'</strong> (<a href="http://twitter.com/'+user+'">@'+user+'</a>)<br/>'+data.location+'</p><p>'+parseTwLinks(data.description)+'</p>');
+            }
+        })
+      });
+  </script>
+</section>
 
   
 </aside>
