@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
+  <title><![CDATA[hitrok.io]]></title>
   <link href="http://hitrok.github.io/atom.xml" rel="self"/>
   <link href="http://hitrok.github.io/"/>
-  <updated>2014-06-26T23:14:40+09:00</updated>
+  <updated>2014-06-26T23:24:10+09:00</updated>
   <id>http://hitrok.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[hitrok]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
